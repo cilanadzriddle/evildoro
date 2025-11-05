@@ -2,6 +2,7 @@
 
 import time
 import argparse
+# from playsound import playsound
 
 def rest(rest_time):
     while rest_time:
@@ -10,7 +11,7 @@ def rest(rest_time):
         print(timeformat, end='\r')
         time.sleep(1)
         rest_time -= 1
-    print("End!")
+    print("End!\r")
 
 def work(work_time):
     while work_time:
@@ -19,10 +20,19 @@ def work(work_time):
         print(timeformat, end='\r')
         time.sleep(1)
         work_time -= 1
-    print("End!")
+    print("End!\r")
 
-work_time = int(input("Enter seconds of work: "))
-rest_time = int(input("Enter seconds of rest: "))
+cycles = int(1)
+pomodoro = str(input("Pomodoro? "))
 
-work(work_time)
-rest(rest_time)
+if(pomodoro == "Y"):
+    cycles = int(input("Enter number of cycles: "))
+    work_time = int(input("Enter seconds of work: "))
+    rest_time = int(input("Enter seconds of rest: "))
+else:
+    work_time = int(input("Enter seconds of work: "))
+
+for i in range(0, cycles):
+    work(work_time)
+    if(pomodoro == "Y"):
+        rest(rest_time)
