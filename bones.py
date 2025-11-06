@@ -1,29 +1,34 @@
 #!/usr/bin/env python3
+# dependencies
 
 import time
 import argparse
-# from playsound import playsound
+import subprocess
 
-def rest(rest_time):
+def rest(rest_time, current_cycle, total_cycle):
+    # subprocess.Popen(["play", "/home/denz/Music/SFX/a-real-boy.mp3", "-q"])
     while rest_time:
-        mins, secs = divmod(rest_time, 60)
-        timeformat = '{:02d}:{:02d}'.format(mins, secs)
-        print(timeformat, end='\r')
+        hours, remainder = divmod(rest_time, 3600)
+        mins, secs = divmod(remainder, 60)
+        timeformat = '{:02d}:{:02d}:{:02d}'.format(hours, mins, secs)
+        print(timeformat, " REST: [", current_cycle, "/", total_cycle, "]", end='\r')
         time.sleep(1)
         rest_time -= 1
-    print("End!\r")
+    print("End!", end='\r')
 
-def work(work_time):
+def work(work_time, current_cycle, total_cycle):
+    # subprocess.Popen(["play", "/home/denz/Music/Ringtones/The Third Sanctuary.mp3", "-q"])
     while work_time:
-        mins, secs = divmod(work_time, 60)
-        timeformat = '{:02d}:{:02d}'.format(mins, secs)
-        print(timeformat, end='\r')
+        hours, remainder = divmod(work_time, 3600)
+        mins, secs = divmod(remainder, 60)
+        timeformat = '{:02d}:{:02d}:{:02d}'.format(hours, mins, secs)
+        print(timeformat, " WORK: [", current_cycle, "/", total_cycle, "]", end='\r')
         time.sleep(1)
         work_time -= 1
-    print("End!\r")
+    print("End!", end='\r')
 
 cycles = int(1)
-pomodoro = str(input("Pomodoro? "))
+pomodoro = str(input("Pomodoro? [Y/N] "))
 
 if(pomodoro == "Y"):
     cycles = int(input("Enter number of cycles: "))
@@ -32,7 +37,11 @@ if(pomodoro == "Y"):
 else:
     work_time = int(input("Enter seconds of work: "))
 
-for i in range(0, cycles):
-    work(work_time)
+# subprocess.Popen(["hyprshade", "on", "grayscale"])
+for i in range(1, cycles+1):
+    work(work_time, i, cycles)
     if(pomodoro == "Y"):
-        rest(rest_time)
+        rest(rest_time, i, cycles)
+    # else:
+        # subprocess.Popen(["play", "/home/denz/Music/SFX/a-real-boy.mp3", "-q"])
+# subprocess.Popen(["hyprshade", "off"])
