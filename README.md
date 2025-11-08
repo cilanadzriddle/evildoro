@@ -1,5 +1,5 @@
 # togore
-My first ever coding project! `togore` is a terminal user interface (TUI) timer tool with Pomodoro capabilities using Python and the Textual library. Ugh...
+My first ever coding project! `togore` is a terminal user interface (TUI) timer tool with Pomodoro capabilities using Python and the Textual library. Heh heheh... heh... heh...
 # Installation
 Clone this repository... and download the libraries... I'M SO SORRY PLEASE DON'T HURT ME
 # Usage
