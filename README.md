@@ -19,6 +19,12 @@ Use `python` to compile the application. `togore` uses the `argparse` library, s
 ```
 python togore.py -m 25 -M 5 -t "Cry" -c 5
 ```
+## `on_` files
+You may add commands to the following files for extra and customizable functionality:
+- `on_execution`
+- `on_work`
+- `on_rest`
+- `on_finish`
 # Help
 Help.
 
